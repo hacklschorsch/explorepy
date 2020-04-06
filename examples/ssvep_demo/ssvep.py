@@ -203,7 +203,7 @@ class SSVEPExperiment:
 
     def _init_vis(self):
         self.win = visual.Window([800, 600], monitor="testMonitor",
-                                 fullscr=False, screen=1, units="deg", color=[0.1, 0.1, 0.1])
+                                 fullscr=True, screen=1, units="deg", color=[0.1, 0.1, 0.1])
         self.win.recordFrameIntervals = True
         for i in range(len(self._fr_rates)):
             self.targets.append(CheckerBoard(window=self.win,
