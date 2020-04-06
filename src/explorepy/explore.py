@@ -118,8 +118,8 @@ class Explore:
         self.stream_processor.subscribe(callback=self.recorders['orn'].write_data, topic=TOPICS.raw_orn)
         self.stream_processor.subscribe(callback=self.recorders['exg'].set_marker, topic=TOPICS.marker)
         print("Recording...")
-        rec_timer = Timer(duration, self.stop_recording)
-        rec_timer.start()
+        self._rec_timer = Timer(duration, self.stop_recording)
+        self._rec_timer.start()
 
     def stop_recording(self):
         """Stop recording"""
@@ -130,6 +130,7 @@ class Explore:
         self.recorders['orn'].stop()
         if self.recorders['exg'].file_type == 'csv':
             self.recorders['marker'].stop()
+        self._rec_timer.cancel()
         print('Recording stopped.')
 
     def convert_bin(self, bin_file, out_dir='', file_type='edf', do_overwrite=False):
