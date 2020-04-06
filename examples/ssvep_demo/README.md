@@ -27,5 +27,12 @@ Place EEG electrodes on the occipital visual cortex (Oz, O1, O2, POz, etc.) and 
 in your terminal.
 
 ```
-$ python main.py --name Explore_1438 --duration 100
+$ python realtime.py --name Explore_1438 --duration 100
+```
+
+In order to record data for later analysis, run the following command. This experiment shows asks subject
+to focus on the pointed target and sets a marker on trial start and end events.
+
+```
+$ python experiment.py -n Explore_1438 -f rec_file
 ```
