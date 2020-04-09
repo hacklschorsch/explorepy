@@ -388,7 +388,6 @@ class Dashboard:
         self.exg_plot = figure(y_range=(0.01, self.n_chan + 1 - 0.01), y_axis_label='Voltage', x_axis_label='Time (s)',
                                title="ExG signal",
                                plot_height=600, plot_width=1270,
-                               y_minor_ticks=int(10),
                                tools=[ResetTool()], active_scroll=None, active_drag=None,
                                active_inspect=None, active_tap=None)
 
@@ -413,7 +412,8 @@ class Dashboard:
         self.imp_plot = self._init_imp_plot()
 
         # Set yaxis properties
-        self.exg_plot.yaxis.ticker = SingleIntervalTicker(interval=1, num_minor_ticks=0)
+        self.exg_plot.yaxis.ticker = SingleIntervalTicker(interval=1, num_minor_ticks=1)
+        self.exg_plot.ygrid.ticker.max_interval = 1
 
         # Initial plot line
         for i in range(self.n_chan):
